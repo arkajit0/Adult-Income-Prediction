@@ -11,7 +11,7 @@ def index():
 @app.route('/predict', methods=['POST', 'GET'])
 def result():
     if request.method == 'POST':
-        # try:
+        try:
             education_dict = {'Preschool': 1, '1st-4th': 2, '5th-6th': 3, '7th-8th': 4, '9th': 5, '10th': 6, '11th': 7,
                               '12th': 8, 'HS-grad': 9, 'Some-college': 10, 'Assoc-voc': 11, 'Assoc-acdm': 12,
                               'Bachelors': 13, 'Masters': 14, 'Prof-school': 15, 'Doctorate': 16}
@@ -102,9 +102,9 @@ def result():
 
             return render_template("result.html", prediction=wage_class[predict])
 
-        # except Exception as e:
-        #     print(e)
-        #     print('something went wrong')
+        except Exception as e:
+            print(e)
+            print('something went wrong')
 
 if __name__ == '__main__':
     app.run(debug=True)
