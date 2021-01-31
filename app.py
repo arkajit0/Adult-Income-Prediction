@@ -39,7 +39,7 @@ def result():
                             'Husband': None}
             race_dict = {'Asian-Pac-Islander': 0, 'Black': 1, 'Other': 2, 'White': 3, 'Amer-Indian-Eskimo': None}
 
-            print(request.form)
+            # print(request.form)
             age = float(request.form['age'])
             education = education_dict[request.form['education']]
             sex = gender[request.form['gender']]
