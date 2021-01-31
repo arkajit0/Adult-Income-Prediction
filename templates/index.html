@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Page</title>
+    <style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  /* The image used */
+  background-image: url("/static/images/image.jpg");
+
+  /* Add the blur effect */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Position text in the middle of the page/image */
+.bg-text {
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+<div class="bg-image"></div>
+
+    <div class="bg-text">
+        <div class="content">
+        <h1 style="text-align: center">Predict If a person has Affair</h1>
+        <div class="form">
+            <form action="/predict" method="post">
+            <label for="education">Highest Qualification </label>
+            <select name="education" id="education">
+                <option value="Preschool">Preschool</option>
+                <option value="1st-4th">1st-4th</option>
+                <option value="5th-6th">5th-6th</option>
+                <option value="7th-8th">7th-8th</option>
+                <option value="9th">9th</option>
+                <option value="10th">10th</option>
+                <option value="11th">11th</option>
+                <option value="12th">12th</option>
+                <option value="HS-grad">HS-grad</option>
+                <option value="Some-college">Some-college</option>
+                <option value="Assoc-voc">Assoc-voc</option>
+                <option value="Assoc-acdm">Assoc-acdm</option>
+                <option value="Bachelors">Bachelors</option>
+                <option value="Masters">Masters</option>
+                <option value="Prof-school">Prof-school</option>
+                <option value="Doctorate">Doctorate</option>
+                <option value=""></option>
+            </select>
+            <br><br>
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+            <br><br>
+            <label for="age">Age</label>
+            <input name="age", id="age"  type="number" placeholder="Age" min="17" max="90" step="any" required>
+                <br><br>
+            <label for="fnlwgt">Final Weight</label>
+            <input name="fnlwgt", id="fnlwgt"  type="number" step="any" min="12285" max="1484705" required>
+            <br><br>
+                <label for="c_gain">Capital Gain</label>
+            <input name="capital_gain", id="c_gain"  type="number" step="any" min="0" max="99999" required>
+            <br><br>
+                <label for="c_loss">Capital Loss</label>
+            <input name="capital_loss", id="c_loss"  type="number" step="any" min="0" max="4356" required>
+            <br><br>
+                <label for="hrs_per_week">Hours Per Week</label>
+            <input name="hrs_per_week", id="hrs_per_week"  type="number" step="any" min="1" max="99" required>
+            <br><br>
+            <label for="native_country">Country</label>
+            <select name="native_country" id="native_country">
+                <option value="United-States">United-States</option>
+                <option value="Mexico">Mexico</option>
+                <option value="Philippines">Philippines</option>
+                <option value="Germany">Germany</option>
+                <option value="Canada">Canada</option>
+                <option value="India">India</option>
+                <option value="England">England</option>
+                <option value="Puerto-Rico">Puerto-Rico</option>
+                <option value="China">China</option>
+                <option value="Cuba">Cuba</option>
+                <option value="Japan">Japan</option>
+                <option value="El-Salvador">El-Salvador</option>
+                <option value="Jamaica">Jamaica</option>
+                <option value="South">South</option>
+                <option value="Italy">Italy</option>
+                <option value="Taiwan">Taiwan</option>
+                <option value="Poland">Poland</option>
+                <option value="Dominican-Republic">Dominican-Republic</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Iran">Iran</option>
+                <option value="Haiti">Haiti</option>
+                <option value="Guatemala">Guatemala</option>
+                <option value="Greece">Greece</option>
+                <option value="Columbia">Columbia</option>
+                <option value="Portugal">Portugal</option>
+                <option value="France">France</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Nicaragua">Nicaragua</option>
+                <option value="Ireland">Ireland</option>
+                <option value="Peru">Peru</option>
+                <option value="Cambodia">Cambodia</option>
+                <option value="Hong">Hong</option>
+                <option value="Thailand">Thailand</option>
+                <option value="Trinadad&Tobago">Trinadad&Tobago</option>
+                <option value="Outlying-US(Guam-USVI-etc)">Outlying-US(Guam-USVI-etc)</option>
+                <option value="Yugoslavia">Yugoslavia</option>
+                <option value="Honduras">Honduras</option>
+                <option value="Hungary">Hungary</option>
+                <option value="Scotland">Scotland</option>
+                <option value="Laos">Laos</option>
+                <option value="Holand-Netherlands">Holand-Netherlands</option>
+            </select>
+            <br><br>
+            <label for="marital_status">Marital Status</label>
+            <select name="marital_status" id="marital_status">
+                <option value="Married-AF-spouse">Married-AF-spouse</option>
+                <option value="Married-civ-spouse">Married-civ-spouse</option>
+                <option value="Married-spouse-absent">Married-spouse-absentr</option>
+                <option value="Never-married">Never Married</option>
+                <option value="Separated">Separated</option>
+                <option value="Widowed">Widowed</option>
+                <option value="Divorced">Divorced</option>
+            </select>
+            <br><br>
+                <label for="occupation">Occupation</label>
+                <select name="occupation" id="occupation">
+                    <option value="Armed-Forces">Armed-Forces</option>
+                    <option value="Craft-repair">Craft-repair</option>
+                    <option value="Exec-managerial">Exec-managerial</option>
+                    <option value="Farming-fishing">Farming-fishing</option>
+                    <option value="Handlers-cleaners">Handlers-cleaners</option>
+                    <option value="Machine-op-inspct">Machine-op-inspct</option>
+                    <option value="Other-service">Other-service</option>
+                    <option value="Priv-house-serv">Priv-house-serv</option>
+                    <option value="Prof-specialty">Prof-specialty</option>
+                    <option value="Protective-serv">Protective-serv</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Tech-support">Tech-support</option>
+                    <option value="Transport-moving">Transport-moving</option>
+                    <option value="Adm-clerical">Adm-clerical</option>
+                </select>
+                <br><br>
+                <label for="race">Race</label>
+                <select name="race" id="race">
+                    <option value="Asian-Pac-Islander">Asian-Pac-Islander</option>
+                    <option value="Black">Black</option>
+                    <option value="Other">Other</option>
+                    <option value="White">White</option>
+                    <option value="Amer-Indian-Eskimo">Amer-Indian-Eskimo</option>
+                </select>
+                <br><br>
+                <label for="wageclass">Wage Class</label>
+                <select name="wageclass" id="wageclass">
+                    <option value="Federal-gov">Federal-gov</option>
+                    <option value="Local-gov">Local-gov</option>
+                    <option value="Never-worked">Never-worked</option>
+                    <option value="Private">Private</option>
+                    <option value="Self-emp-inc">Self-emp-inc</option>
+                    <option value="Self-emp-not-inc">Self-emp-not-inc</option>
+                    <option value="State-gov">State-gov</option>
+                    <option value="Without-pay">Without-pay</option>
+                </select>
+                <br><br>
+                <label for="relation_status">Relation Status</label>
+                <select name="relation_status" id="relation_status">
+                    <option value="Not-in-family">Not-in-family</option>
+                    <option value="Other-relative">Other-relative</option>
+                    <option value="Own-child">Own-child</option>
+                    <option value="Unmarried">Unmarried</option>
+                    <option value="Wife">Wife</option>
+                    <option value="Husband">Husband</option>
+                </select>
+                <br><br>
+                <input value="Predict" type="submit">
+            </form>
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
